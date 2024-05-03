@@ -39,6 +39,7 @@ module "alb" {
       target_type                       = "instance"
       deregistration_delay              = 10
       load_balancing_cross_zone_enabled = true
+      # denying the creation of the attachment as it is managed by the autoscaling group
       create_attachment                 = false
     }
   }
