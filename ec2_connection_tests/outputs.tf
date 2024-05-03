@@ -3,5 +3,5 @@ output "public_ip" {
 }
 
 output "ssh_key_location" {
-  value = data.external.ssh_key.result.file_path
+  value = data.external.ssh_key.result.path
 }

@@ -1,9 +1,10 @@
 module "alb" {
   source = "terraform-aws-modules/alb/aws"
 
-  name    = "${var.project_name}-alb"
-  vpc_id  = module.vpc.vpc_id
-  subnets = [module.vpc.public_subnets[0], module.vpc.public_subnets[1]]
+  name                       = "${var.project_name}-alb"
+  vpc_id                     = module.vpc.vpc_id
+  subnets                    = [module.vpc.public_subnets[0], module.vpc.public_subnets[1]]
+  enable_deletion_protection = false
 
   # Security Group
   security_group_ingress_rules = {
@@ -40,7 +41,7 @@ module "alb" {
       deregistration_delay              = 10
       load_balancing_cross_zone_enabled = true
       # denying the creation of the attachment as it is managed by the autoscaling group
-      create_attachment                 = false
+      create_attachment = false
     }
   }
 

@@ -62,7 +62,7 @@ resource "aws_security_group" "allow_http_and_ssh" {
 
 resource "aws_key_pair" "this" {
   key_name   = "dan-key"
-  public_key = file(data.external.ssh_key.result.file_path)
+  public_key = file(data.external.ssh_key.result.path)
 }
 
 # just testing the data source here
@@ -72,6 +72,6 @@ data "external" "ssh_key" {
   query = {
     file_path = ".ssh/id_rsa.pub"
     home_dir  = "Users"
-    username  = var.username
+    user_name = var.username
   }
 }

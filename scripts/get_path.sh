@@ -3,9 +3,9 @@
 # Exit if any of the intermediate steps fail
 set -e
 
-eval "$(jq -r '@sh "FP=\(.file_path) HOME=\(.home_dir), USER=\(.username)"')"
+eval "$(jq -r '@sh "FP=\(.file_path) HOME=\(.home_dir) USER=\(.user_name)"')"
 
-FullPath="/$HOME/$FP/$USER"
+FullPath="/$HOME/$USER/$FP"
 
 # Safely produce a JSON object containing the result value.
 # jq will ensure that the value is properly quoted
