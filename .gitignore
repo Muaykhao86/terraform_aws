@@ -1,3 +1,5 @@
 .terraform
 .terraform*
 .vscode
+.ds_store
+terraform.tfstate
