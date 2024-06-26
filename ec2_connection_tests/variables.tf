@@ -13,4 +13,5 @@ variable "instance_type" {
 variable "username" {
   type        = string
   description = "The username for the OS"
+  default     = "ec2-user"
 }

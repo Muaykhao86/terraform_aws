@@ -6,8 +6,8 @@ module "vpc" {
   # public_subnets  = 3
   # private_subnets = 3
   # newbits         = 8
-  enable_nat_gateway = true
-  single_nat_gateway = true
+  # enable_nat_gateway = true
+  # single_nat_gateway = true
   # one_nat_gateway_per_az = false
   # manage_default_security_group = false
 }

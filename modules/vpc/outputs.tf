@@ -22,3 +22,8 @@ output "vpc_cidr_block" {
   value = module.aws_vpc.vpc_cidr_block
   description = "The CIDR block of the VPC"
 }
+
+output "private_route_table_ids" {
+  value = module.aws_vpc.private_route_table_ids
+  description = "The IDs of the private route tables"
+}
