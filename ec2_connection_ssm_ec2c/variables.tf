@@ -15,3 +15,9 @@ variable "username" {
   description = "The username for the OS"
   default     = "ec2-user"
 }
+
+variable "instance_count" {
+  type        = number
+  default     = 1
+  description = "The number of EC2 instances to create"
+}

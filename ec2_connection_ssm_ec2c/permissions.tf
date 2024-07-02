@@ -1,3 +1,4 @@
+# Session Manager Role
 resource "aws_iam_role" "session_manager" {
   name               = "SessionManagerRole"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
@@ -20,14 +21,9 @@ data "aws_iam_policy" "AmazonSSMManagedInstanceCore" {
   arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
-# data "aws_iam_policy" "AmazonSSMPatchAssociation" {
-#   arn = "arn:aws:iam::aws:policy/AmazonSSMPatchAssociation"
-# }
-
 resource "aws_iam_role_policy_attachment" "session_manager" {
   for_each = {
     AmazonSSMManagedInstanceCore = data.aws_iam_policy.AmazonSSMManagedInstanceCore.arn
-    # AmazonSSMPatchAssociation    = data.aws_iam_policy.AmazonSSMPatchAssociation.arn
   }
 
   role       = aws_iam_role.session_manager.name
@@ -56,7 +52,8 @@ data "aws_iam_policy_document" "ec2_users_policy_document" {
     resources = [
       "arn:aws:ec2:eu-west-2:827496304918:instance/*",
       "arn:aws:ssm:eu-west-2:827496304918:session/*",
-      "arn:aws:ssm:eu-west-2:827496304918:document/*"
+      "arn:aws:ssm:eu-west-2:827496304918:document/*",
+      "arn:aws:ssm:eu-west-2::document/*"
     ]
   }
 
